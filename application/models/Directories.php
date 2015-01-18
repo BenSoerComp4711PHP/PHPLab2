@@ -18,6 +18,29 @@ class Directories extends CI_Model{
         return $query->result_array();
     }
 
+    function bottomFourImages(){
+        $this->db->order_by('id', 'desc');
+        $this->db->limit(4);
+        $query = $this->db->get('images');
+        return $query->result_array();
+
+    }
+
+    function recentNews(){
+        $this->db->order_by('id', 'asc');
+        $this->db->limit(3);
+        $query = $this->db->get('news');
+        return $query->result_array();
+    }
+
+    function topStory(){
+        $this->db->order_by('id', 'asc');
+        $this->db->limit(1);
+        $query = $this->db->get('news');
+        $stories = $query->result_array();
+        return $stories[0];
+    }
+
 
 
 

@@ -14,24 +14,15 @@
 			<div class="sidebar">
 				<h3>recent news</h3>
 				<ul>
+				{newsfeed}
 					<li>
-						<span><a href="#">Hair, I just meet you</a></span>
+						<span><a href="#">{title}</a></span>
 						<p>
-							Our website templates are created with inspiration, checked for quality and originality and meticulously sliced and coded. What’s more, they’re absolutely free!
+							{information}
 						</p>
 					</li>
-					<li>
-						<span><a href="#">Styling Hair</a></span>
-						<p>
-							This website template has been designed by Free Website Templates for you, for free. You can remove any link to our website from this website template, you're free to use this website
-						</p>
-					</li>
-					<li>
-						<span><a href="#">How to pick the right hairstyle</a></span>
-						<p>
-							You can use them to design websites for clients, so long as you agree with the Terms of Use. You can even remove all our links if you want to.
-						</p>
-					</li>
+				{/newsfeed}
+
 				</ul>
 			</div>
 		</div>

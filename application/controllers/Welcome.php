@@ -56,6 +56,28 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
+
+		$dirs = $this->directories->bottomFourImages();
+
+		$sources = array();
+		foreach($dirs as $directory){
+			$sources[] = array('image' => '../../public/images/' . $directory['directory'], 'titletag' => $directory['tag'], 'contenttext' => $directory['description']);
+		}
+
+		$reorderedSources = array();
+		for($i = count($sources)-1; $i >= 0 ; $i--){
+			$reorderedSources[] = $sources[$i];
+		}
+
+		$this->data['trends'] = $reorderedSources;
+
+		$featuredStory = $this->directories->topStory();
+
+		$this->data['featuredtitle'] = $featuredStory['title'];
+		$this->data['featuredcontent'] = $featuredStory['information'];
+
+
+
 		//$this->load->view('welcome');
 		$this->menu[0]['class'] = 'class="selected"';
 		$this->data['menu'] = $this->menu;
