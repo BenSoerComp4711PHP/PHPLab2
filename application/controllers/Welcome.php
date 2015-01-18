@@ -57,6 +57,7 @@ class Welcome extends MY_Controller {
 	public function index()
 	{
 
+		/* Get the bottom four images along with thier tags and descriptions */
 		$dirs = $this->directories->bottomFourImages();
 
 		$sources = array();
@@ -64,6 +65,7 @@ class Welcome extends MY_Controller {
 			$sources[] = array('image' => '../../public/images/' . $directory['directory'], 'titletag' => $directory['tag'], 'contenttext' => $directory['description']);
 		}
 
+		// database stores stories in backwards order, need to flip around the array
 		$reorderedSources = array();
 		for($i = count($sources)-1; $i >= 0 ; $i--){
 			$reorderedSources[] = $sources[$i];
@@ -71,18 +73,23 @@ class Welcome extends MY_Controller {
 
 		$this->data['trends'] = $reorderedSources;
 
+
+		/* Get the top story for the main page */
 		$featuredStory = $this->directories->topStory();
 
 		$this->data['featuredtitle'] = $featuredStory['title'];
 		$this->data['featuredcontent'] = $featuredStory['information'];
 
 
-
+		//set the home icon as the selected icon in the menu
 		//$this->load->view('welcome');
 		$this->menu[0]['class'] = 'class="selected"';
 		$this->data['menu'] = $this->menu;
 
+		// put inject content into template and load view
 		$this->data['pagebody'] = 'welcome';
+
+		//load banner section for the page
 		$this->data['banner'] = $this->load->view('banner',"", true);
 		$this->render();
 	}

@@ -12,12 +12,18 @@ class Directories extends CI_Model{
         parent::__construct();
     }
 
+    /**
+     * @return returns an associative array of all of the images ordered in ascending order
+     */
     function all(){
         $this->db->order_by('id','asc');
         $query = $this->db->get('images');
         return $query->result_array();
     }
 
+    /**
+     * @return returns an associative array of the bottom four images in descending order
+     */
     function bottomFourImages(){
         $this->db->order_by('id', 'desc');
         $this->db->limit(4);
@@ -26,6 +32,9 @@ class Directories extends CI_Model{
 
     }
 
+    /**
+     * @return returns an associative array of the top 3 news articles in ascending order
+     */
     function recentNews(){
         $this->db->order_by('id', 'asc');
         $this->db->limit(3);
@@ -33,6 +42,9 @@ class Directories extends CI_Model{
         return $query->result_array();
     }
 
+    /**
+     * @return returns an object of the top story
+     */
     function topStory(){
         $this->db->order_by('id', 'asc');
         $this->db->limit(1);

@@ -14,6 +14,7 @@ class MY_Controller extends CI_Controller{
         'Home' => '/', 'Gallery' => '/gallery', 'About' => '/about'
     );
 
+    // the menu bar array
     protected $menu = array(
         array('page' => 'home','route' => '/', 'class' => ''), array('page' => 'about', 'route' => '/about', 'class' => ''),
         array('page' => 'hairstyle', 'route' => '/hairstyle', 'class' => ''), array('page' => 'news', 'route' => '/news', 'class' => ''),
@@ -29,7 +30,7 @@ class MY_Controller extends CI_Controller{
         parent::__construct();
         $this->data = array();
         $this->data['title'] = 'ZiZurz Website Template';
-        $this->data['banner'] = "";
+        $this->data['banner'] = ""; //banner by default is not included
     }
     /**
      * Render this page
